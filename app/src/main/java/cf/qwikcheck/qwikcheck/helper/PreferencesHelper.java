@@ -3,13 +3,14 @@ package cf.qwikcheck.qwikcheck.helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import cf.qwikcheck.qwikcheck.utils.Constants;
+
 public class PreferencesHelper {
 
-    public static final String PREF_FILE_NAME = "QWIKCHECK_PREF_FILE";
-
     private final SharedPreferences mPref;
+
     public PreferencesHelper(Context context) {
-        mPref = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
+        mPref = context.getSharedPreferences(Constants.PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
 
     public void clear() {
