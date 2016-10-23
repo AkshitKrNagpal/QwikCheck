@@ -17,6 +17,10 @@ public class SessionHelper {
         this.mPreferencesHelper = new PreferencesHelper(context);
     }
 
+    public boolean isLoggedIn() {
+        return (getUserID()!=0);
+    }
+
     public int getUserID() {
         return mPreferencesHelper.getInt(Constants.USER_ID_KEY,0);
     }
