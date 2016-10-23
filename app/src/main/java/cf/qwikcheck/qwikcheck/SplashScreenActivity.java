@@ -2,6 +2,7 @@ package cf.qwikcheck.qwikcheck;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.Toast;
 
 import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
@@ -17,35 +18,23 @@ public class SplashScreenActivity extends QwikCheckBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                try {
-                    Thread.sleep(DELAY_TIME);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-
-                    if(!ConnectivityUtils.isAppConnected(SplashScreenActivity.this)) {
-                        Toast.makeText(SplashScreenActivity.this,"No Internet. The app will exit now.",Toast.LENGTH_LONG);
-                    } else {
-                        Intent intent;
-                        if(new SessionHelper(SplashScreenActivity.this).isLoggedIn()) {
-                            intent = new Intent(SplashScreenActivity.this,MainActivity.class);
-                        } else {
-                            intent = new Intent(SplashScreenActivity.this,LoginActivity.class);
-                        }
-                        finish();
-                        SplashScreenActivity.this.startActivity(intent);
-                    }
-
-                }
+        if (!ConnectivityUtils.isAppConnected(SplashScreenActivity.this)) {
+            Toast.makeText(SplashScreenActivity.this, "No Internet. The app will exit now.", Toast.LENGTH_LONG);
+        } else {
+            Intent intent;
+            if (new SessionHelper(SplashScreenActivity.this).isLoggedIn()) {
+                intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+            } else {
+                intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
             }
-        });
-
-        t.start();
+            startActivity(intent);
+        }
 
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        finish();
+    }
 }
