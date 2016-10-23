@@ -1,17 +1,14 @@
 package cf.qwikcheck.qwikcheck;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.widget.Toast;
 
-import cf.qwikcheck.qwikcheck.helper.SessionHelper;
-import cf.qwikcheck.qwikcheck.utils.ConnectivityUtils;
+import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
+import cf.qwikcheck.qwikcheck.Helper.SessionHelper;
+import cf.qwikcheck.qwikcheck.Utils.ConnectivityUtils;
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends QwikCheckBaseActivity {
 
     private final int DELAY_TIME = 3000;
 
