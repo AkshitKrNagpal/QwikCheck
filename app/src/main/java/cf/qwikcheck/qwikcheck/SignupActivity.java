@@ -1,9 +1,10 @@
 package cf.qwikcheck.qwikcheck;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-public class SignupActivity extends Activity {
+import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
+
+public class SignupActivity extends QwikCheckBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
