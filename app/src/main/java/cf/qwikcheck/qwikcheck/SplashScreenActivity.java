@@ -1,40 +1,45 @@
 package cf.qwikcheck.qwikcheck;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.widget.Toast;
+import android.os.Handler;
+import android.support.annotation.Nullable;
 
 import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
 import cf.qwikcheck.qwikcheck.Helper.SessionHelper;
 import cf.qwikcheck.qwikcheck.Utils.ConnectivityUtils;
+import cf.qwikcheck.qwikcheck.Utils.DialogFactory;
 
 public class SplashScreenActivity extends QwikCheckBaseActivity {
 
-    private final int DELAY_TIME = 3000;
 
+    public static int SPLASH_TIME_OUT = 3000;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        if (!ConnectivityUtils.isAppConnected(SplashScreenActivity.this)) {
-            Toast.makeText(SplashScreenActivity.this, "No Internet. The app will exit now.", Toast.LENGTH_LONG);
-        } else {
-            Intent intent;
-            if (new SessionHelper(SplashScreenActivity.this).isLoggedIn()) {
-                intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-            } else {
-                intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                if (!ConnectivityUtils.isAppConnected(SplashScreenActivity.this)) {
+                    //Looper.prepare();
+                    Dialog dialog = DialogFactory.createSimpleOkErrorDialog(SplashScreenActivity.this,"No Internet","This app requires internet to function. The app will exit now.");
+                    dialog.show();
+                } else {
+                    Intent intent;
+                    if (new SessionHelper(SplashScreenActivity.this).isLoggedIn()) {
+                        intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    } else {
+                        intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    }
+                    startActivity(intent);
+                }
+                finish();
             }
-            startActivity(intent);
-        }
+        }, SPLASH_TIME_OUT);
 
-    }
-
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        finish();
     }
 }
