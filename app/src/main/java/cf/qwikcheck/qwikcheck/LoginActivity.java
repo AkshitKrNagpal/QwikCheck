@@ -1,8 +1,11 @@
 package cf.qwikcheck.qwikcheck;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,10 +20,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
+import cf.qwikcheck.qwikcheck.Helper.SessionHelper;
 import cf.qwikcheck.qwikcheck.Utils.Constants;
 
 public class LoginActivity extends QwikCheckBaseActivity {
@@ -56,7 +64,7 @@ public class LoginActivity extends QwikCheckBaseActivity {
 
     public void login(final String username,final String password) {
 
-        final ProgressDialog dialog = ProgressDialog.show(this, "Logging in", "Please wait...", true);
+        final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Logging in", "Please wait...", true);
         RequestQueue queue = Volley.newRequestQueue(this);
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, Constants.USER_LOGIN_URL,
@@ -64,8 +72,47 @@ public class LoginActivity extends QwikCheckBaseActivity {
                 {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("Error.Response", response);
-                        dialog.dismiss();
+                        Log.d("Response", response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if(jsonObject.getBoolean("success")) {
+
+                                JSONObject user_data = jsonObject.getJSONObject("user_data");
+
+                                SessionHelper sessionHelper = new SessionHelper(LoginActivity.this);
+
+                                sessionHelper.setUserID(user_data.getInt("user_id"));
+                                sessionHelper.setUsername(user_data.getString("user_name"));
+                                sessionHelper.setRealname(user_data.getString("real_name"));
+
+                                LoadingDialog.dismiss();
+                                Intent intent = new Intent(LoginActivity.this,SplashScreenActivity.class);
+                                startActivity(intent);
+                                finish();
+
+
+                            } else {
+
+                                JSONArray errors = jsonObject.getJSONArray("error");
+
+                                String error_message = errors.join("\n");
+
+                                new AlertDialog.Builder(LoginActivity.this)
+                                    .setTitle("Error")
+                                    .setMessage(error_message)
+                                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            LoadingDialog.dismiss();
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                 new Response.ErrorListener()
