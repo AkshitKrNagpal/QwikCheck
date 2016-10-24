@@ -13,11 +13,15 @@ public class SessionHelper {
     private PreferencesHelper mPreferencesHelper;
 
     public SessionHelper(Context context) {
-        this.mPreferencesHelper = new PreferencesHelper(context);
+        mPreferencesHelper = new PreferencesHelper(context);
     }
 
     public boolean isLoggedIn() {
         return (getUserID()!=0);
+    }
+
+    public void logout() {
+        mPreferencesHelper.clear();
     }
 
     public int getUserID() {
