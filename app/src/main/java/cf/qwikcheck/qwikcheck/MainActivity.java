@@ -72,7 +72,9 @@ public class MainActivity extends QwikCheckBaseActivity {
             if(result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this,DisplayVehicleDetailsActivity.class);
+                intent.putExtra("vehicle_number",result.getContents());
+                startActivity(intent);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
