@@ -94,9 +94,7 @@ public class LoginActivity extends QwikCheckBaseActivity {
 
                             } else {
 
-                                JSONArray errors = jsonObject.getJSONArray("error");
-
-                                String error_message = errors.join("\n");
+                                String error_message = jsonObject.getString("error");
 
                                 new AlertDialog.Builder(LoginActivity.this)
                                     .setTitle("Error")
