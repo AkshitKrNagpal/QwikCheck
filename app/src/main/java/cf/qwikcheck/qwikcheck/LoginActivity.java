@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInstaller;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,8 @@ public class LoginActivity extends QwikCheckBaseActivity {
         final EditText username = (EditText) findViewById(R.id.username);
         final EditText password = (EditText) findViewById(R.id.password);
 
+        password.setTransformationMethod(new PasswordTransformationMethod());
+
         // Login Button
         Button login_button = (Button) findViewById(R.id.login_button);
         login_button.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +60,7 @@ public class LoginActivity extends QwikCheckBaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -118,6 +122,16 @@ public class LoginActivity extends QwikCheckBaseActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d("Error.Response", error.toString());
+                        new AlertDialog.Builder(LoginActivity.this)
+                                .setTitle("Error")
+                                .setMessage("There was an error connecting to server. Make sure your internet is connected.")
+                                .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        LoadingDialog.dismiss();
+                                    }
+                                })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
                     }
                 }
         ) {
