@@ -6,7 +6,7 @@ package cf.qwikcheck.qwikcheck.Utils;
 
 public class Constants {
 
-    public static final String API_BASE_URL = "http://qwikcheck.cf/";
+    public static final String API_BASE_URL = "https://qwikcheck.cf/";
     public static final String USER_LOGIN_URL = API_BASE_URL + "users/login.php";
 
     // Preferences keys
