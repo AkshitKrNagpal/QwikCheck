@@ -48,4 +48,12 @@ public class SessionHelper {
         mPreferencesHelper.putString(Constants.REAL_NAME_KEY,Realname);
     }
 
+    public String getUsertype() {
+        return mPreferencesHelper.getString(Constants.USER_TYPE_KEY,"");
+    }
+
+    public void setUsertype(String usertype) {
+        mPreferencesHelper.putString(Constants.USER_TYPE_KEY,usertype);
+    }
+
 }
