@@ -87,7 +87,7 @@ public class LoginActivity extends QwikCheckBaseActivity {
                                 sessionHelper.setRealname(user_data.getString("real_name"));
 
                                 LoadingDialog.dismiss();
-                                Intent intent = new Intent(LoginActivity.this,SplashScreenActivity.class);
+                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                 startActivity(intent);
                                 finish();
 
