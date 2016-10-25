@@ -7,8 +7,11 @@ package cf.qwikcheck.qwikcheck.Utils;
 public class Constants {
 
     public static final String API_BASE_URL = "https://qwikcheck.cf/";
+
     public static final String USER_LOGIN_URL = API_BASE_URL + "users/login.php";
     public static final String USER_REG_URL = API_BASE_URL + "users/register.php";
+
+    public static final String CHECK_URL = API_BASE_URL + "certificates.php";
 
     // Preferences keys
     public static final String PREF_FILE_NAME = "QWIKCHECK_PREF_FILE";
