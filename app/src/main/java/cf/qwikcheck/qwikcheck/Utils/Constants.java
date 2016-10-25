@@ -16,5 +16,6 @@ public class Constants {
     public static final String USER_ID_KEY = "userID";
     public static final String USER_NAME_KEY = "userName";
     public static final String REAL_NAME_KEY = "realName";
-    public static final String USER_TYPE_KEY = "realName";
+    public static final String USER_TYPE_KEY = "userType";
+    public static final String PROFILE_COMPLETE_KEY = "profileComplete";
  }

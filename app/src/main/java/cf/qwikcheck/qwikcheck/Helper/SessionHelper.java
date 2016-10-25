@@ -56,4 +56,12 @@ public class SessionHelper {
         mPreferencesHelper.putString(Constants.USER_TYPE_KEY,usertype);
     }
 
+    public boolean isProfileComplete() {
+        return mPreferencesHelper.getBoolean(Constants.PROFILE_COMPLETE_KEY,false);
+    }
+
+    public void setProfileComplete(boolean profileComplete) {
+        mPreferencesHelper.putBoolean(Constants.PROFILE_COMPLETE_KEY,profileComplete);
+    }
+
 }
