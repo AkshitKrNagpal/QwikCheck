@@ -27,8 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/c_password"
-        android:hint="Re-enter Password"
-        android:inputType="textPassword"/>
+        android:hint="Re-enter Password" />
 
     <LinearLayout
         android:layout_width="match_parent"
