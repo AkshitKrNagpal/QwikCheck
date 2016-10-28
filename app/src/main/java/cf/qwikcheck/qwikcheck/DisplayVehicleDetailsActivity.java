@@ -69,38 +69,54 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-
-                            if( jsonObject.getBoolean("rc_ok") == true ) {
-                                rc_img.setImageDrawable(getDrawable(R.drawable.right));
+                            boolean success = jsonObject.getBoolean("success");
+                            if(!success) {
+                                new AlertDialog.Builder(DisplayVehicleDetailsActivity.this)
+                                        .setTitle("Error")
+                                        .setMessage(jsonObject.getString("error"))
+                                        .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                LoadingDialog.dismiss();
+                                                finish();
+                                            }
+                                        })
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .show();
                             } else {
-                                rc_img.setImageDrawable(getDrawable(R.drawable.wrong));
-                                error_rc.setText(jsonObject.getString("rc_error"));
-                                error_rc.setVisibility(View.VISIBLE);
+
+                                if (jsonObject.getBoolean("rc_ok") == true) {
+                                    rc_img.setImageDrawable(getDrawable(R.drawable.right));
+                                } else {
+                                    rc_img.setImageDrawable(getDrawable(R.drawable.wrong));
+                                    error_rc.setText(jsonObject.getString("rc_error"));
+                                    error_rc.setVisibility(View.VISIBLE);
+                                }
+                                rc_img.setVisibility(View.VISIBLE);
+                                rc_loading.setVisibility(View.GONE);
+
+
+                                if (jsonObject.getBoolean("insurance_ok") == true) {
+                                    insurance_img.setImageDrawable(getDrawable(R.drawable.right));
+                                } else {
+                                    insurance_img.setImageDrawable(getDrawable(R.drawable.wrong));
+                                    error_insurance.setText(jsonObject.getString("insurance_error"));
+                                    error_insurance.setVisibility(View.VISIBLE);
+                                }
+                                insurance_img.setVisibility(View.VISIBLE);
+                                insurance_loading.setVisibility(View.GONE);
+
+
+                                if (jsonObject.getBoolean("poll_ok") == true) {
+                                    poll_img.setImageDrawable(getDrawable(R.drawable.right));
+                                } else {
+                                    poll_img.setImageDrawable(getDrawable(R.drawable.wrong));
+                                    error_poll.setText(jsonObject.getString("poll_error"));
+                                    error_poll.setVisibility(View.VISIBLE);
+                                }
+                                poll_img.setVisibility(View.VISIBLE);
+                                poll_loading.setVisibility(View.GONE);
+
                             }
-                            rc_img.setVisibility(View.VISIBLE);
-                            rc_loading.setVisibility(View.GONE);
-
-
-                            if( jsonObject.getBoolean("insurance_ok") == true ) {
-                                insurance_img.setImageDrawable(getDrawable(R.drawable.right));
-                            } else {
-                                insurance_img.setImageDrawable(getDrawable(R.drawable.wrong));
-                                error_insurance.setText(jsonObject.getString("insurance_error"));
-                                error_insurance.setVisibility(View.VISIBLE);
-                            }
-                            insurance_img.setVisibility(View.VISIBLE);
-                            insurance_loading.setVisibility(View.GONE);
-
-
-                            if( jsonObject.getBoolean("poll_ok") == true ) {
-                                poll_img.setImageDrawable(getDrawable(R.drawable.right));
-                            } else {
-                                poll_img.setImageDrawable(getDrawable(R.drawable.wrong));
-                                error_poll.setText(jsonObject.getString("poll_error"));
-                                error_poll.setVisibility(View.VISIBLE);
-                            }
-                            poll_img.setVisibility(View.VISIBLE);
-                            poll_loading.setVisibility(View.GONE);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -119,6 +135,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                 .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         LoadingDialog.dismiss();
+                                        finish();
                                     }
                                 })
                                 .setIcon(android.R.drawable.ic_dialog_alert)
