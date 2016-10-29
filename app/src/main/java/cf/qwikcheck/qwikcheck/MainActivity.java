@@ -24,9 +24,9 @@ public class MainActivity extends QwikCheckBaseActivity {
         SessionHelper sessionHelper = new SessionHelper(MainActivity.this);
         String usertype = sessionHelper.getUsertype();
 
-        if(usertype.equals("police")) {
+        if("police".equals(usertype)) {
             setContentView(R.layout.activity_main_police);
-        } else if (usertype.equals("user")) {
+        } else if ("user".equals(usertype)) {
             setContentView(R.layout.activity_main_user);
         } else {
             (new SessionHelper(this)).logout();
