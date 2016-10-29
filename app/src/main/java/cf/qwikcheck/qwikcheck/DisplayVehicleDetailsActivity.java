@@ -22,10 +22,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
-import cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView;
-import cf.qwikcheck.qwikcheck.Helper.SessionHelper;
-import cf.qwikcheck.qwikcheck.Utils.Constants;
+import cf.qwikcheck.qwikcheck.base.QwikCheckBaseActivity;
+import cf.qwikcheck.qwikcheck.customClasses.SquareImageView;
+import cf.qwikcheck.qwikcheck.helper.SessionHelper;
+import cf.qwikcheck.qwikcheck.utils.Constants;
 
 public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 

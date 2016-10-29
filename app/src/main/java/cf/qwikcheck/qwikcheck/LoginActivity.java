@@ -24,9 +24,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
-import cf.qwikcheck.qwikcheck.Helper.SessionHelper;
-import cf.qwikcheck.qwikcheck.Utils.Constants;
+import cf.qwikcheck.qwikcheck.base.QwikCheckBaseActivity;
+import cf.qwikcheck.qwikcheck.helper.SessionHelper;
+import cf.qwikcheck.qwikcheck.utils.Constants;
 
 public class LoginActivity extends QwikCheckBaseActivity {
 

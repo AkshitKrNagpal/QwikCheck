@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"/>
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"/>
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"/>
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"/>
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"/>

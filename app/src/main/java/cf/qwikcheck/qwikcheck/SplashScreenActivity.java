@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 
-import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
-import cf.qwikcheck.qwikcheck.Helper.SessionHelper;
-import cf.qwikcheck.qwikcheck.Utils.ConnectivityUtils;
-import cf.qwikcheck.qwikcheck.Utils.DialogFactory;
+import cf.qwikcheck.qwikcheck.base.QwikCheckBaseActivity;
+import cf.qwikcheck.qwikcheck.helper.SessionHelper;
+import cf.qwikcheck.qwikcheck.utils.ConnectivityUtils;
+import cf.qwikcheck.qwikcheck.utils.DialogFactory;
 
 public class SplashScreenActivity extends QwikCheckBaseActivity {
 

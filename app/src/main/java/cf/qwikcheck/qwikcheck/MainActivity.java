@@ -10,9 +10,9 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import cf.qwikcheck.qwikcheck.Base.QwikCheckBaseActivity;
-import cf.qwikcheck.qwikcheck.CustomClasses.SquareImageView;
-import cf.qwikcheck.qwikcheck.Helper.SessionHelper;
+import cf.qwikcheck.qwikcheck.base.QwikCheckBaseActivity;
+import cf.qwikcheck.qwikcheck.customClasses.SquareImageView;
+import cf.qwikcheck.qwikcheck.helper.SessionHelper;
 
 public class MainActivity extends QwikCheckBaseActivity {
 
