@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cf.qwikcheck.qwikcheck.base.QwikCheckBaseActivity;
-import cf.qwikcheck.qwikcheck.customClasses.SquareImageView;
+import cf.qwikcheck.qwikcheck.customclasses.SquareImageView;
 import cf.qwikcheck.qwikcheck.helper.SessionHelper;
 import cf.qwikcheck.qwikcheck.utils.Constants;
 

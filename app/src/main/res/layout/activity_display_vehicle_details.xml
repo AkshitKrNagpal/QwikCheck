@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/rc_img"/>
@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/insurance_img"/>
@@ -109,7 +109,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.customClasses.SquareImageView
+                <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/poll_img"/>

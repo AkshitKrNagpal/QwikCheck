@@ -11,7 +11,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import cf.qwikcheck.qwikcheck.base.QwikCheckBaseActivity;
-import cf.qwikcheck.qwikcheck.customClasses.SquareImageView;
+import cf.qwikcheck.qwikcheck.customclasses.SquareImageView;
 import cf.qwikcheck.qwikcheck.helper.SessionHelper;
 
 public class MainActivity extends QwikCheckBaseActivity {
