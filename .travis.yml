@@ -4,3 +4,5 @@ android:
     - build-tools-24.0.3
     - android-21
     - extra
+sudo: required
+	
