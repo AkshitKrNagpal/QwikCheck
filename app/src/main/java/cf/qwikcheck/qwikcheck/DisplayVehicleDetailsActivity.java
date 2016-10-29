@@ -83,7 +83,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                         .show();
                             } else {
 
-                                if (jsonObject.getBoolean("rc_ok") == true) {
+                                if (jsonObject.getBoolean("rc_ok")) {
                                     rc_img.setImageDrawable(getDrawable(R.drawable.right));
                                 } else {
                                     rc_img.setImageDrawable(getDrawable(R.drawable.wrong));
@@ -94,7 +94,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                 rc_loading.setVisibility(View.GONE);
 
 
-                                if (jsonObject.getBoolean("insurance_ok") == true) {
+                                if (jsonObject.getBoolean("insurance_ok")) {
                                     insurance_img.setImageDrawable(getDrawable(R.drawable.right));
                                 } else {
                                     insurance_img.setImageDrawable(getDrawable(R.drawable.wrong));
@@ -105,7 +105,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                 insurance_loading.setVisibility(View.GONE);
 
 
-                                if (jsonObject.getBoolean("poll_ok") == true) {
+                                if (jsonObject.getBoolean("poll_ok")) {
                                     poll_img.setImageDrawable(getDrawable(R.drawable.right));
                                 } else {
                                     poll_img.setImageDrawable(getDrawable(R.drawable.wrong));
