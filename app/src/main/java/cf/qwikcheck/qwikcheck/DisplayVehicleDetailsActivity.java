@@ -83,37 +83,9 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                         .show();
                             } else {
 
-                                if (jsonObject.getBoolean("rc_ok")) {
-                                    rc_img.setImageDrawable(getDrawable(R.drawable.right));
-                                } else {
-                                    rc_img.setImageDrawable(getDrawable(R.drawable.wrong));
-                                    error_rc.setText(jsonObject.getString("rc_error"));
-                                    error_rc.setVisibility(View.VISIBLE);
-                                }
-                                rc_img.setVisibility(View.VISIBLE);
-                                rc_loading.setVisibility(View.GONE);
-
-
-                                if (jsonObject.getBoolean("insurance_ok")) {
-                                    insurance_img.setImageDrawable(getDrawable(R.drawable.right));
-                                } else {
-                                    insurance_img.setImageDrawable(getDrawable(R.drawable.wrong));
-                                    error_insurance.setText(jsonObject.getString("insurance_error"));
-                                    error_insurance.setVisibility(View.VISIBLE);
-                                }
-                                insurance_img.setVisibility(View.VISIBLE);
-                                insurance_loading.setVisibility(View.GONE);
-
-
-                                if (jsonObject.getBoolean("poll_ok")) {
-                                    poll_img.setImageDrawable(getDrawable(R.drawable.right));
-                                } else {
-                                    poll_img.setImageDrawable(getDrawable(R.drawable.wrong));
-                                    error_poll.setText(jsonObject.getString("poll_error"));
-                                    error_poll.setVisibility(View.VISIBLE);
-                                }
-                                poll_img.setVisibility(View.VISIBLE);
-                                poll_loading.setVisibility(View.GONE);
+                                updateStatus(rc_img,rc_loading,error_rc,jsonObject.getBoolean("rc_ok"),jsonObject.getString("rc_error"));
+                                updateStatus(insurance_img,insurance_loading,error_insurance,jsonObject.getBoolean("insurance_ok"),jsonObject.getString("insurance_error"));
+                                updateStatus(poll_img,poll_loading,error_poll,jsonObject.getBoolean("poll_ok"),jsonObject.getString("poll_error"));
 
                             }
 
@@ -154,5 +126,18 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
         };
         queue.add(postRequest);
 
+
+    }
+
+    public void updateStatus(SquareImageView img,ProgressBar loading,TextView error,boolean success,String error_text) {
+        if (success) {
+            img.setImageDrawable(getDrawable(R.drawable.right));
+        } else {
+            img.setImageDrawable(getDrawable(R.drawable.wrong));
+            error.setText(error_text);
+            error.setVisibility(View.VISIBLE);
+        }
+        img.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
     }
 }
