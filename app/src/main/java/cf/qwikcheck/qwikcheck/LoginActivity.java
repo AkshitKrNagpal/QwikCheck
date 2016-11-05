@@ -83,11 +83,11 @@ public class LoginActivity extends QwikCheckBaseActivity {
                                 SessionHelper sessionHelper = new SessionHelper(LoginActivity.this);
 
                                 sessionHelper.setUserID(user_data.getInt("user_id"));
-                                sessionHelper.setUsername(user_data.getString("user_name"));
-                                sessionHelper.setRealname(user_data.getString("real_name"));
-                                sessionHelper.setUsertype(user_data.getString("user_type"));
+                                sessionHelper.setUsername(username);
+                                sessionHelper.setRealname(user_data.getString("full_name"));
+                                sessionHelper.setUsertype(user_data.getString("type"));
                                 sessionHelper.setAPIKey(user_data.getString("api_key"));
-                                sessionHelper.setProfileComplete(user_data.getBoolean("profile_complete"));
+                                //sessionHelper.setProfileComplete(user_data.getBoolean("profile_complete"));
 
                                 LoadingDialog.dismiss();
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
