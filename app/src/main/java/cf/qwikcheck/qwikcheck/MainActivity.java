@@ -25,12 +25,65 @@ public class MainActivity extends QwikCheckBaseActivity {
         String usertype = sessionHelper.getUsertype();
 
         if("police".equals(usertype)) {
+
             setContentView(R.layout.activity_main_police);
+
+            // Scan Barcode Icon
+            SquareImageView scan_barcode_icon = (SquareImageView) findViewById(R.id.scan_barcode_icon);
+            scan_barcode_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    scanBarcode();
+                }
+            });
+
+            // Enter Registration number Icon
+            SquareImageView enter_regno_icon = (SquareImageView) findViewById(R.id.enter_regno_icon);
+            enter_regno_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            // History Icon
+            SquareImageView history_icon = (SquareImageView) findViewById(R.id.history_icon);
+            history_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,ViewHistory.class);
+                    startActivity(intent);
+                }
+            });
+
+            // Contact nearest police station
+            SquareImageView contact_nps_icon = (SquareImageView) findViewById(R.id.contact_nps_icon);
+            contact_nps_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Feature Coming Soon")
+                            .setMessage("App is under development.")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+            });
+
+
+
         } else if ("user".equals(usertype)) {
+
             setContentView(R.layout.activity_main_user);
+
+
         } else if ("admin".equals(usertype)) {
             setContentView(R.layout.activity_main_admin);
+
+
         } else {
+
+
             (new SessionHelper(this)).logout();
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Error")
@@ -44,18 +97,11 @@ public class MainActivity extends QwikCheckBaseActivity {
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
+
+
         }
 
         // For Icons
-
-        // Scan Barcode Icon
-        SquareImageView scan_barcode_icon = (SquareImageView) findViewById(R.id.scan_barcode_icon);
-        scan_barcode_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scanBarcode();
-            }
-        });
 
     }
 

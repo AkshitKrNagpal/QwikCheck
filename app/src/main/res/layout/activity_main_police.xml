@@ -56,7 +56,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/contact_nps_icon"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -83,7 +84,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/enter_regno_icon"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -102,7 +104,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/history_icon"/>
 
                 <TextView
                     android:layout_width="match_parent"
