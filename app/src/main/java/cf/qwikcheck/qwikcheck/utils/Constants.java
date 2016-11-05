@@ -20,5 +20,6 @@ public class Constants {
     public static final String USER_NAME_KEY = "userName";
     public static final String REAL_NAME_KEY = "realName";
     public static final String USER_TYPE_KEY = "userType";
+    public static final String API_KEY = "APIKey";
     public static final String PROFILE_COMPLETE_KEY = "profileComplete";
  }

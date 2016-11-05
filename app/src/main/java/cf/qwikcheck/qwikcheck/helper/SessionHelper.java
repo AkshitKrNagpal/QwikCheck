@@ -64,4 +64,12 @@ public class SessionHelper {
         mPreferencesHelper.putBoolean(Constants.PROFILE_COMPLETE_KEY,profileComplete);
     }
 
+    public String getAPIKey() {
+        return mPreferencesHelper.getString(Constants.API_KEY,"");
+    }
+
+    public void setAPIKey(boolean profileComplete) {
+        mPreferencesHelper.putBoolean(Constants.API_KEY,profileComplete);
+    }
+
 }
