@@ -34,7 +34,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_vehicle_details);
 
-        final String vehicle_id = getIntent().getStringExtra("vehicle_number");
+         final String vehicle_id = getIntent().getStringExtra("vehicle_number");
 
         final SquareImageView rc_img = (SquareImageView) findViewById(R.id.rc_img);
         final SquareImageView insurance_img = (SquareImageView) findViewById(R.id.insurance_img);
@@ -57,7 +57,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         SessionHelper sessionHelper = new SessionHelper(this);
-        final String user_id = Integer.toString(sessionHelper.getUserID());
+        final String apiKey = sessionHelper.getAPIKey();
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, Constants.CHECK_URL,
                 new Response.Listener<String>()
@@ -118,7 +118,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("user_id", user_id);
+                params.put("api_key", apiKey);
                 params.put("vehicle_id", vehicle_id);
 
                 return params;
