@@ -52,7 +52,7 @@ public class MainActivity extends QwikCheckBaseActivity {
             history_icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,ViewHistory.class);
+                    Intent intent = new Intent(MainActivity.this,ViewHistoryActivity.class);
                     startActivity(intent);
                 }
             });
