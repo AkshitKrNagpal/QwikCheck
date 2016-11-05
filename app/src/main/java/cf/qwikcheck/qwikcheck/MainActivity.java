@@ -28,6 +28,8 @@ public class MainActivity extends QwikCheckBaseActivity {
             setContentView(R.layout.activity_main_police);
         } else if ("user".equals(usertype)) {
             setContentView(R.layout.activity_main_user);
+        } else if ("admin".equals(usertype)) {
+            setContentView(R.layout.activity_main_admin);
         } else {
             (new SessionHelper(this)).logout();
             new AlertDialog.Builder(MainActivity.this)
