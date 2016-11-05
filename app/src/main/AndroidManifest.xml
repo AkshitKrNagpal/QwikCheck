@@ -26,7 +26,8 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="sensorPortrait"
             tools:replace="screenOrientation" />
-        <activity android:name=".DisplayVehicleDetailsActivity"></activity>
+        <activity android:name=".DisplayVehicleDetailsActivity" />
+        <activity android:name=".EnterRegNoActivity"></activity>
     </application>
 
 </manifest>
