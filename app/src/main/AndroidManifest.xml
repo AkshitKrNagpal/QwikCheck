@@ -27,7 +27,8 @@
             android:screenOrientation="sensorPortrait"
             tools:replace="screenOrientation" />
         <activity android:name=".DisplayVehicleDetailsActivity" />
-        <activity android:name=".EnterRegNoActivity"></activity>
+        <activity android:name=".EnterRegNoActivity" />
+        <activity android:name=".ViewHistoryActivity"></activity>
     </application>
 
 </manifest>

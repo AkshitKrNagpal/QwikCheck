@@ -69,7 +69,7 @@ public class SessionHelper {
     }
 
     public void setAPIKey(String apiKey) {
-        mPreferencesHelper.putBoolean(Constants.API_KEY,apiKey);
+        mPreferencesHelper.putString(Constants.API_KEY,apiKey);
     }
 
 }

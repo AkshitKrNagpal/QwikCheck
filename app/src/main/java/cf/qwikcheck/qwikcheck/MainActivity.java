@@ -100,9 +100,6 @@ public class MainActivity extends QwikCheckBaseActivity {
 
 
         }
-
-        // For Icons
-
     }
 
     public void scanBarcode() {
