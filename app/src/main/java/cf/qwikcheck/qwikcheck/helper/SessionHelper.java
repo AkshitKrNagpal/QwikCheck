@@ -68,8 +68,8 @@ public class SessionHelper {
         return mPreferencesHelper.getString(Constants.API_KEY,"");
     }
 
-    public void setAPIKey(boolean profileComplete) {
-        mPreferencesHelper.putBoolean(Constants.API_KEY,profileComplete);
+    public void setAPIKey(String apiKey) {
+        mPreferencesHelper.putBoolean(Constants.API_KEY,apiKey);
     }
 
 }
