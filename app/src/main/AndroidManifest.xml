@@ -28,7 +28,10 @@
             tools:replace="screenOrientation" />
         <activity android:name=".DisplayVehicleDetailsActivity" />
         <activity android:name=".EnterRegNoActivity" />
-        <activity android:name=".ViewHistoryActivity"></activity>
+        <activity android:name=".ViewHistoryActivity" />
+        <activity android:name=".ViewRCActivity" />
+        <activity android:name=".ViewINSActivity" />
+        <activity android:name=".ViewPUCCActivity"></activity>
     </application>
 
 </manifest>
