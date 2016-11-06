@@ -68,11 +68,16 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
+
+                            JSONObject rc = jsonObject.getJSONObject("rc_details");
+                            JSONObject ins = jsonObject.getJSONObject("ins_details");
+                            JSONObject poll = jsonObject.getJSONObject("poll_details");
+
+                            boolean success = rc.getBoolean("success") && ins.getBoolean("success") && poll.getBoolean("success");
                             if(!success) {
                                 new AlertDialog.Builder(DisplayVehicleDetailsActivity.this)
                                         .setTitle("Error")
-                                        .setMessage(jsonObject.getString("error"))
+                                        .setMessage("Wrong")
                                         .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 LoadingDialog.dismiss();
@@ -83,9 +88,9 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                         .show();
                             } else {
 
-                                updateStatus(rc_img,rc_loading,error_rc,jsonObject.getBoolean("rc_ok"),jsonObject.getString("rc_error"));
-                                updateStatus(insurance_img,insurance_loading,error_insurance,jsonObject.getBoolean("insurance_ok"),jsonObject.getString("insurance_error"));
-                                updateStatus(poll_img,poll_loading,error_poll,jsonObject.getBoolean("poll_ok"),jsonObject.getString("poll_error"));
+                                updateStatus(rc_img,rc_loading,error_rc,rc.getBoolean("ok"),rc.getString("message"));
+                                updateStatus(insurance_img,insurance_loading,error_insurance,ins.getBoolean("ok"),ins.getString("message"));
+                                updateStatus(poll_img,poll_loading,error_poll,poll.getBoolean("ok"),poll.getString("message"));
 
                             }
 
@@ -119,7 +124,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
             {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("api_key", apiKey);
-                params.put("vehicle_id", vehicle_id);
+                params.put("vehicle_number", vehicle_id);
 
                 return params;
             }
