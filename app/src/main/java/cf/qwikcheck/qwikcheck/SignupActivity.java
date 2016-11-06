@@ -37,6 +37,7 @@ public class SignupActivity extends QwikCheckBaseActivity {
         final EditText username = (EditText) findViewById(R.id.username);
         final EditText password = (EditText) findViewById(R.id.password);
         final EditText c_password = (EditText) findViewById(R.id.c_password);
+        final EditText fullname = (EditText) findViewById(R.id.fullname);
 
         password.setTransformationMethod(new PasswordTransformationMethod());
         c_password.setTransformationMethod(new PasswordTransformationMethod());
@@ -57,12 +58,27 @@ public class SignupActivity extends QwikCheckBaseActivity {
         signup_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signup(username.getText().toString().trim(), password.getText().toString().trim(), c_password.getText().toString().trim());
+                signup(username.getText().toString().trim(), password.getText().toString().trim(), c_password.getText().toString().trim(),fullname.getText().toString().trim());
             }
         });
     }
 
-    public void signup(final String username, final String password, final String c_password) {
+    public void signup(final String username, final String password, final String c_password,final String fullname) {
+
+        if( !password.equals(c_password)) {
+
+            new AlertDialog.Builder(SignupActivity.this)
+                    .setTitle("Passwords do not match.")
+                    .setMessage("Confirm password do not match.")
+                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+            return;
+        }
 
         final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Signing Up", "Please wait...", true);
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -137,8 +153,7 @@ public class SignupActivity extends QwikCheckBaseActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("username", username);
                 params.put("password", password);
-                params.put("c_password", c_password);
-
+                params.put("fullname", fullname);
                 return params;
             }
         };
