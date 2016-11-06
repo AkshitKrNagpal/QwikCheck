@@ -19,7 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp">
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,12 +37,13 @@
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
                     android:padding="20dp"
-                    android:id="@+id/scan_barcode_icon"/>
+                    android:id="@+id/reg_vehicle"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Barcode"/>
+                    android:text="Register Vehicle"
+                    android:textAlignment="center"/>
 
             </LinearLayout>
 
@@ -55,12 +56,14 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/view_vehicle"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Barcode4"/>
+                    android:text="View RC details"
+                    android:textAlignment="center"/>
 
             </LinearLayout>
 
@@ -82,12 +85,14 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/reg_insurance"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Barcode5"/>
+                    android:text="Insure Vehicle"
+                    android:textAlignment="center"/>
 
             </LinearLayout>
 
@@ -100,14 +105,17 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/view_insurance"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Barcode6"/>
+                    android:text="View Insurance"
+                    android:textAlignment="center"/>
 
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -126,12 +134,14 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/reg_poll"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Barcode7"/>
+                    android:text="Register PUCC"
+                    android:textAlignment="center"/>
 
             </LinearLayout>
 
@@ -144,14 +154,17 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:id="@+id/view_poll"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Scan Barcode8"/>
+                    android:text="View PUCC"
+                    android:textAlignment="center"/>
 
             </LinearLayout>
+
 
         </LinearLayout>
 
