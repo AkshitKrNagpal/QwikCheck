@@ -11,6 +11,11 @@
     tools:context="cf.qwikcheck.qwikcheck.LoginActivity"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_head"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
