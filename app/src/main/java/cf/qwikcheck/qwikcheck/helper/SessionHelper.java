@@ -72,4 +72,20 @@ public class SessionHelper {
         mPreferencesHelper.putString(Constants.API_KEY,apiKey);
     }
 
+    public String getAddress() {
+        return mPreferencesHelper.getString(Constants.ADDRESS_KEY,"");
+    }
+
+    public void setAddress(String address) {
+        mPreferencesHelper.putString(Constants.ADDRESS_KEY,address);
+    }
+
+    public String getContactNo() {
+        return mPreferencesHelper.getString(Constants.CONTACT_NO_KEY,"");
+    }
+
+    public void setContactNo(String contactNo) {
+        mPreferencesHelper.putString(Constants.CONTACT_NO_KEY,contactNo);
+    }
+
 }

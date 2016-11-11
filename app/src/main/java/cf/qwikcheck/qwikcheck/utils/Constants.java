@@ -22,4 +22,7 @@ public class Constants {
     public static final String USER_TYPE_KEY = "userType";
     public static final String API_KEY = "APIKey";
     public static final String PROFILE_COMPLETE_KEY = "profileComplete";
+    public static final String ADDRESS_KEY = "address";
+    public static final String CONTACT_NO_KEY = "contactNo";
+
  }
