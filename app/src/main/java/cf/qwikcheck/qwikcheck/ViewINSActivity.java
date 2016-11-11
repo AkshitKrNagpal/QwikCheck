@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,6 +31,7 @@ public class ViewINSActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_ins);
 
+        final TextView ins_details = (TextView) findViewById(R.id.ins_details);
         final String vehicle_id = getIntent().getStringExtra("vehicle_number");
 
         final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Loading", "Please wait...", true);
@@ -62,6 +64,10 @@ public class ViewINSActivity extends Activity {
                                         .setIcon(android.R.drawable.ic_dialog_alert)
                                         .show();
                             } else {
+
+                                JSONObject details = jsonObject.getJSONObject("details");
+
+                                ins_details.setText(details.toString());
 
                             }
 

@@ -31,7 +31,11 @@
         <activity android:name=".ViewHistoryActivity" />
         <activity android:name=".ViewRCActivity" />
         <activity android:name=".ViewINSActivity" />
-        <activity android:name=".ViewPUCCActivity"></activity>
+        <activity android:name=".ViewPUCCActivity" />
+        <activity android:name=".RegisterRC" />
+        <activity android:name=".ViewMyVehicleActivity" />
+        <activity android:name=".ViewProfileActivity" />
+        <activity android:name=".EditProfileActivity"></activity>
     </application>
 
 </manifest>

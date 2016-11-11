@@ -18,24 +18,23 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 
 import cf.qwikcheck.qwikcheck.helper.SessionHelper;
 import cf.qwikcheck.qwikcheck.utils.Constants;
 
-public class ViewPUCCActivity extends Activity {
+public class ViewMyVehicleActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_pucc);
-
-        final TextView pucc_details = (TextView) findViewById(R.id.pucc_details);
-
-        final String vehicle_id = getIntent().getStringExtra("vehicle_number");
+        setContentView(R.layout.activity_view_my_vehicle);
 
         final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Loading", "Please wait...", true);
+
+        final TextView my_vehicle_1 = (TextView) findViewById(R.id.my_vehicle_1);
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -53,7 +52,7 @@ public class ViewPUCCActivity extends Activity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if(!success) {
-                                new AlertDialog.Builder(ViewPUCCActivity.this)
+                                new AlertDialog.Builder(ViewMyVehicleActivity.this)
                                         .setTitle("Error")
                                         .setMessage(jsonObject.getString("error"))
                                         .setNegativeButton("OK", new DialogInterface.OnClickListener() {
@@ -66,9 +65,10 @@ public class ViewPUCCActivity extends Activity {
                                         .show();
                             } else {
 
-                                JSONObject details = jsonObject.getJSONObject("details");
-
-                                pucc_details.setText(details.toString());
+                                if( jsonObject.getInt("count") == 0 ) {
+                                    String vehicle_number = jsonObject.getString("message");
+                                    my_vehicle_1.setText(vehicle_number);
+                                }
 
                             }
 
@@ -83,7 +83,7 @@ public class ViewPUCCActivity extends Activity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d("Error.Response", error.toString());
-                        new AlertDialog.Builder(ViewPUCCActivity.this)
+                        new AlertDialog.Builder(ViewMyVehicleActivity.this)
                                 .setTitle("Error")
                                 .setMessage("There was an error connecting to server. Make sure your internet is connected.")
                                 .setNegativeButton("OK", new DialogInterface.OnClickListener() {
@@ -102,12 +102,13 @@ public class ViewPUCCActivity extends Activity {
             {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("api_key", apiKey);
-                params.put("vehicle_number", vehicle_id);
-                params.put("details","PUCC");
-
+                params.put("get","my_vehicles");
                 return params;
             }
         };
         queue.add(postRequest);
+
+
+
     }
 }

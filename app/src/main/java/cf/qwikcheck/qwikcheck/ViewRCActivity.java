@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,7 +31,7 @@ public class ViewRCActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_rc);
 
-
+        final TextView rc_details = (TextView) findViewById(R.id.rc_details);
         final String vehicle_id = getIntent().getStringExtra("vehicle_number");
 
         final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Loading", "Please wait...", true);
@@ -63,6 +64,12 @@ public class ViewRCActivity extends Activity {
                                         .setIcon(android.R.drawable.ic_dialog_alert)
                                         .show();
                             } else {
+
+                                JSONObject details = jsonObject.getJSONObject("details");
+
+                                rc_details.setText(details.toString());
+
+
 
                             }
 
@@ -97,7 +104,7 @@ public class ViewRCActivity extends Activity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("api_key", apiKey);
                 params.put("vehicle_number", vehicle_id);
-                params.put("details","rc");
+                params.put("details","RC");
 
                 return params;
             }
