@@ -55,7 +55,7 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/scan_barcode_icon"
+                    android:src="@drawable/nps_icon"
                     android:padding="20dp"
                     android:id="@+id/contact_nps_icon"/>
 
@@ -83,7 +83,7 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/scan_barcode_icon"
+                    android:src="@drawable/enter_text_icon"
                     android:padding="20dp"
                     android:id="@+id/enter_regno_icon"/>
 
@@ -103,15 +103,15 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/scan_barcode_icon"
+                    android:src="@drawable/logout_icon"
                     android:padding="20dp"
-                    android:id="@+id/history_icon"/>
+                    android:id="@+id/logout_icon"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:text="History"/>
+                    android:text="Logout"/>
 
             </LinearLayout>
 

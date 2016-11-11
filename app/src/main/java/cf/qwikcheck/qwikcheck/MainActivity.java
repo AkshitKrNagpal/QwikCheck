@@ -24,6 +24,8 @@ public class MainActivity extends QwikCheckBaseActivity {
         SessionHelper sessionHelper = new SessionHelper(MainActivity.this);
         String usertype = sessionHelper.getUsertype();
 
+
+
         if("police".equals(usertype)) {
 
             setContentView(R.layout.activity_main_police);
@@ -47,13 +49,15 @@ public class MainActivity extends QwikCheckBaseActivity {
                 }
             });
 
-            // History Icon
-            SquareImageView history_icon = (SquareImageView) findViewById(R.id.history_icon);
-            history_icon.setOnClickListener(new View.OnClickListener() {
+            // Logout Icon
+            SquareImageView logout_icon = (SquareImageView) findViewById(R.id.logout_icon);
+            logout_icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,ViewHistoryActivity.class);
+                    (new SessionHelper(MainActivity.this)).logout();
+                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -76,13 +80,126 @@ public class MainActivity extends QwikCheckBaseActivity {
 
             setContentView(R.layout.activity_main_user);
 
+            // View vehicles Icon
+            SquareImageView view_vehicles_icon = (SquareImageView) findViewById(R.id.view_vehicles);
+            view_vehicles_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,ViewMyVehicleActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            // View profile Icon
+            SquareImageView view_profile_icon = (SquareImageView) findViewById(R.id.view_profile);
+            view_profile_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,ViewProfileActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            // Edit profile Icon
+            SquareImageView edit_profile_icon = (SquareImageView) findViewById(R.id.edit_profile_icon);
+            edit_profile_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,EditProfileActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            // Logout Icon
+            SquareImageView logout_icon = (SquareImageView) findViewById(R.id.logout_icon);
+            logout_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    (new SessionHelper(MainActivity.this)).logout();
+                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
 
         } else if ("admin".equals(usertype)) {
+
             setContentView(R.layout.activity_main_admin);
 
+            // RC
+            SquareImageView rc_icon = (SquareImageView) findViewById(R.id.view_vehicle);
+            rc_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
+                    intent.putExtra("next_activity","ViewRC");
+                    startActivity(intent);
+                }
+            });
+
+            SquareImageView reg_rc_icon = (SquareImageView) findViewById(R.id.reg_vehicle);
+            reg_rc_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,RegisterRC.class);
+                    startActivity(intent);
+                }
+            });
+
+            // INS
+            SquareImageView ins_icon = (SquareImageView) findViewById(R.id.view_insurance);
+            ins_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
+                    intent.putExtra("next_activity","ViewINS");
+                    startActivity(intent);
+                }
+            });
+
+            SquareImageView reg_ins_icon = (SquareImageView) findViewById(R.id.reg_insurance);
+            reg_ins_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,RegisterRC.class);
+                    startActivity(intent);
+                }
+            });
+
+            // PUCC
+            SquareImageView pucc_icon = (SquareImageView) findViewById(R.id.view_poll);
+            pucc_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
+                    intent.putExtra("next_activity","ViewPUCC");
+                    startActivity(intent);
+                }
+            });
+
+            SquareImageView reg_pucc_icon = (SquareImageView) findViewById(R.id.reg_vehicle);
+            reg_pucc_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,RegisterRC.class);
+                    startActivity(intent);
+                }
+            });
+
+            // Logout Icon
+            SquareImageView logout_icon = (SquareImageView) findViewById(R.id.logout_icon);
+            logout_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    (new SessionHelper(MainActivity.this)).logout();
+                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
 
         } else {
-
 
             (new SessionHelper(this)).logout();
             new AlertDialog.Builder(MainActivity.this)
