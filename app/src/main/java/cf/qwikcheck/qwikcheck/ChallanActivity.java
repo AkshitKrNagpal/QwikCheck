@@ -47,7 +47,7 @@ public class ChallanActivity extends QwikCheckBaseActivity {
 
         description = new ArrayList<>();
 
-        challan_amount+=getIntent().getIntExtra("challan",0);
+        challan_amount=getIntent().getIntExtra("challan",0);
 
         if( getIntent().getStringExtra("desc") != null ) {
             description.add(getIntent().getStringExtra("desc"));
