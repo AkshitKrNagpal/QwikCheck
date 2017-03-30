@@ -135,6 +135,8 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                     desc+=poll.getString("message")+"\n";
                                 }
 
+                                desc = desc.substring(0,desc.length()-1);
+
                                 updateStatus(rc_img,status_rc,rc.getBoolean("ok"),rc.getString("message"));
                                 updateStatus(insurance_img,status_insurance,ins.getBoolean("ok"),ins.getString("message"));
                                 updateStatus(poll_img,status_poll,poll.getBoolean("ok"),poll.getString("message"));

@@ -241,6 +241,7 @@ public class ChallanActivity extends QwikCheckBaseActivity {
             sb.append(s);
             sb.append("\n");
         }
+        sb.deleteCharAt(sb.length() - 1);
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
