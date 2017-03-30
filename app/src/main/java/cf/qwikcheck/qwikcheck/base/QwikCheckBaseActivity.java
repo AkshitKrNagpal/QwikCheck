@@ -1,14 +1,14 @@
 package cf.qwikcheck.qwikcheck.base;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 /**
  * Created by akshit on 24/10/16.
  */
 
-public class QwikCheckBaseActivity extends Activity {
+public class QwikCheckBaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

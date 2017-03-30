@@ -3,9 +3,14 @@ package cf.qwikcheck.qwikcheck;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -29,28 +34,59 @@ import cf.qwikcheck.qwikcheck.utils.Constants;
 
 public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
+    public static int challan = 0;
+    public static String desc = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_vehicle_details);
 
-         final String vehicle_id = getIntent().getStringExtra("vehicle_number");
 
-        final SquareImageView rc_img = (SquareImageView) findViewById(R.id.rc_img);
-        final SquareImageView insurance_img = (SquareImageView) findViewById(R.id.insurance_img);
-        final SquareImageView poll_img = (SquareImageView) findViewById(R.id.poll_img);
+        final String vehicle_id = getIntent().getStringExtra("vehicle_number");
 
-        final TextView error_rc = (TextView) findViewById(R.id.error_rc);
-        final TextView error_insurance = (TextView) findViewById(R.id.error_insurance);
-        final TextView error_poll = (TextView) findViewById(R.id.error_poll);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if( toolbar != null ) {
+            setSupportActionBar(toolbar);
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle("Status : "+vehicle_id);
+            }
+        }
 
-        final ProgressBar rc_loading = (ProgressBar) findViewById(R.id.rc_loading);
-        final ProgressBar insurance_loading = (ProgressBar) findViewById(R.id.insurance_loading);
-        final ProgressBar poll_loading = (ProgressBar) findViewById(R.id.poll_loading);
+        final ImageView rc_img = (ImageView) findViewById(R.id.rc_img);
+        final ImageView insurance_img = (ImageView) findViewById(R.id.insurance_img);
+        final ImageView poll_img = (ImageView) findViewById(R.id.poll_img);
 
-        rc_img.setVisibility(View.GONE);
-        insurance_img.setVisibility(View.GONE);
-        poll_img.setVisibility(View.GONE);
+        final TextView status_rc = (TextView) findViewById(R.id.status_rc);
+        final TextView status_insurance = (TextView) findViewById(R.id.status_insurance);
+        final TextView status_poll = (TextView) findViewById(R.id.status_poll);
+
+        rc_img.setVisibility(View.INVISIBLE);
+        insurance_img.setVisibility(View.INVISIBLE);
+        poll_img.setVisibility(View.INVISIBLE);
+
+        Button issueChallanButton = (Button) findViewById(R.id.issue_challan_button);
+        issueChallanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayVehicleDetailsActivity.this,ChallanActivity.class);
+                intent.putExtra("vehicle_number",vehicle_id);
+                intent.putExtra("challan",challan);
+                Log.e("desc",desc);
+                intent.putExtra("desc",desc);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        Button backButton = (Button) findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Loading", "Please wait...", true);
 
@@ -64,8 +100,6 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                 {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("Response", response);
-
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
@@ -88,9 +122,22 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                         .show();
                             } else {
 
-                                updateStatus(rc_img,rc_loading,error_rc,rc.getBoolean("ok"),rc.getString("message"));
-                                updateStatus(insurance_img,insurance_loading,error_insurance,ins.getBoolean("ok"),ins.getString("message"));
-                                updateStatus(poll_img,poll_loading,error_poll,poll.getBoolean("ok"),poll.getString("message"));
+                                if(!rc.getBoolean("ok")) {
+                                    challan +=1000;
+                                    desc+=rc.getString("message")+",";
+                                }
+                                if(!ins.getBoolean("ok")) {
+                                    challan+=1000;
+                                    desc+=ins.getString("message")+",";
+                                }
+                                if(!poll.getBoolean("ok")) {
+                                    challan+=1000;
+                                    desc+=poll.getString("message")+",";
+                                }
+
+                                updateStatus(rc_img,status_rc,rc.getBoolean("ok"),rc.getString("message"));
+                                updateStatus(insurance_img,status_insurance,ins.getBoolean("ok"),ins.getString("message"));
+                                updateStatus(poll_img,status_poll,poll.getBoolean("ok"),poll.getString("message"));
 
                             }
 
@@ -114,7 +161,6 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                                         finish();
                                     }
                                 })
-                                .setIcon(android.R.drawable.ic_dialog_alert)
                                 .show();
                     }
                 }
@@ -134,15 +180,16 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
     }
 
-    public void updateStatus(SquareImageView img,ProgressBar loading,TextView error,boolean success,String error_text) {
+    public void updateStatus(ImageView img,TextView status,boolean success,String status_text) {
         if (success) {
-            img.setImageDrawable(getDrawable(R.drawable.right));
+            img.setImageDrawable(getResources().getDrawable(R.drawable.right));
         } else {
-            img.setImageDrawable(getDrawable(R.drawable.wrong));
-            error.setText(error_text);
-            error.setVisibility(View.VISIBLE);
+            img.setImageDrawable(getResources().getDrawable(R.drawable.wrong));
+            status.setText(status_text);
+            status.setVisibility(View.VISIBLE);
         }
         img.setVisibility(View.VISIBLE);
-        loading.setVisibility(View.GONE);
     }
+
+
 }

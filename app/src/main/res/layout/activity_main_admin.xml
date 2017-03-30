@@ -13,8 +13,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo_admin"/>
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +34,6 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/register_icon"
                     android:padding="20dp"
                     android:id="@+id/reg_vehicle"/>
 
@@ -55,7 +53,6 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/view_details"
                     android:padding="20dp"
                     android:id="@+id/view_vehicle"/>
 
@@ -84,7 +81,6 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/register_icon"
                     android:padding="20dp"
                     android:id="@+id/reg_insurance"/>
 
@@ -104,7 +100,6 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/view_details"
                     android:padding="20dp"
                     android:id="@+id/view_insurance"/>
 
@@ -133,7 +128,6 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/register_icon"
                     android:padding="20dp"
                     android:id="@+id/reg_poll"/>
 
@@ -153,7 +147,6 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/view_details"
                     android:padding="20dp"
                     android:id="@+id/view_poll"/>
 
@@ -173,7 +166,6 @@
                 <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:src="@drawable/logout_icon"
                     android:padding="20dp"
                     android:id="@+id/logout_icon"/>
 

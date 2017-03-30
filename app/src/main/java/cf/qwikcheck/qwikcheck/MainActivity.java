@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -24,13 +27,64 @@ public class MainActivity extends QwikCheckBaseActivity {
         SessionHelper sessionHelper = new SessionHelper(MainActivity.this);
         String usertype = sessionHelper.getUsertype();
 
-
-
         if("police".equals(usertype)) {
 
             setContentView(R.layout.activity_main_police);
 
-            // Scan Barcode Icon
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            if( toolbar != null ) {
+                setSupportActionBar(toolbar);
+                ActionBar actionBar = getSupportActionBar();
+                if (actionBar != null) {
+                    //actionBar.setDisplayHomeAsUpEnabled(true);
+                    //actionBar.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.logo_square));
+                    actionBar.setTitle("QwikCheck - Police");
+                }
+            }
+
+
+            // Floating Icon
+            //FloatingActionButton scan_qrcode_fab = (FloatingActionButton) findViewById(R.id.fab);
+            (findViewById(R.id.scan_qrcode)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    scanBarcode();
+                }
+            });
+
+            (findViewById(R.id.call_help)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Call For Help")
+                            .setMessage("Clicking this will transmit an SOS to all the nearby police stations")
+                            .show();
+                }
+            });
+
+            TextView name = (TextView) findViewById(R.id.name_textview);
+            String temp = (new SessionHelper(this)).getRealname();
+            name.setText(temp.substring(0,temp.indexOf(' ')));
+
+            (findViewById(R.id.logout)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    (new SessionHelper(MainActivity.this)).logout();
+                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            (findViewById(R.id.history)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,ChallanHistoryActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            /*// Scan Barcode Icon
             SquareImageView scan_barcode_icon = (SquareImageView) findViewById(R.id.scan_barcode_icon);
             scan_barcode_icon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,7 +126,7 @@ public class MainActivity extends QwikCheckBaseActivity {
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
-            });
+            });*/
 
 
 

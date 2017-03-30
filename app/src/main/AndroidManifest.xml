@@ -35,7 +35,10 @@
         <activity android:name=".RegisterRC" />
         <activity android:name=".ViewMyVehicleActivity" />
         <activity android:name=".ViewProfileActivity" />
-        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".ChallanActivity" />
+        <activity android:name=".ChallanHistoryActivity" />
+        <activity android:name=".ViewSingleChallanActivity"></activity>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ package cf.qwikcheck.qwikcheck.utils;
 
 public class Constants {
 
-    public static final String API_BASE_URL = "https://qwikcheck.cf/";
+    public static final String API_BASE_URL = "https://qwikcheck.azurewebsites.net/";
 
     public static final String USER_LOGIN_URL = API_BASE_URL;
     public static final String USER_REG_URL = API_BASE_URL;

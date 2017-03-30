@@ -14,18 +14,19 @@ import cf.qwikcheck.qwikcheck.utils.DialogFactory;
 public class SplashScreenActivity extends QwikCheckBaseActivity {
 
 
-    public static int SPLASH_TIME_OUT = 3000;
+    public static int SPLASH_TIME_OUT = 2000;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        new Handler().postDelayed(new Runnable() {
+         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
+
                 if (!ConnectivityUtils.isAppConnected(SplashScreenActivity.this)) {
-                    //Looper.prepare();
+
                     Dialog dialog = DialogFactory.createSimpleOkErrorDialog(SplashScreenActivity.this,"No Internet","This app requires internet to function. The app will exit now.");
                     dialog.show();
                 } else {
@@ -36,6 +37,7 @@ public class SplashScreenActivity extends QwikCheckBaseActivity {
                         intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     }
                     startActivity(intent);
+                    finish();
                 }
                 finish();
             }

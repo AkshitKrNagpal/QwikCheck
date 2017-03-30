@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +36,15 @@ public class LoginActivity extends QwikCheckBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if( toolbar != null ) {
+            setSupportActionBar(toolbar);
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle("Login");
+            }
+        }
 
         final EditText username = (EditText) findViewById(R.id.username);
         final EditText password = (EditText) findViewById(R.id.password);
@@ -107,7 +118,6 @@ public class LoginActivity extends QwikCheckBaseActivity {
                                             LoadingDialog.dismiss();
                                         }
                                     })
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
                                     .show();
                             }
 
@@ -129,7 +139,6 @@ public class LoginActivity extends QwikCheckBaseActivity {
                                         LoadingDialog.dismiss();
                                     }
                                 })
-                                .setIcon(android.R.drawable.ic_dialog_alert)
                                 .show();
                     }
                 }

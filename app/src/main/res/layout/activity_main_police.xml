@@ -1,123 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cf.qwikcheck.qwikcheck.MainActivity"
-    android:orientation="vertical">
+    android:background="@drawable/background"
+    tools:context="cf.qwikcheck.qwikcheck.MainActivity">
 
-    <ImageView
+    <!--<android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo_police"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark" />-->
+    
+    <!--<ImageView
+        android:layout_margin="8dp"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:src="@drawable/logo_square" />-->
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="30dp">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:textColor="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Hi,"
+                android:textSize="80dp"/>
 
-                <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:src="@drawable/scan_barcode_icon"
-                    android:padding="20dp"
-                    android:id="@+id/scan_barcode_icon"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Scan Barcode"/>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:textColor="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:src="@drawable/nps_icon"
-                    android:padding="20dp"
-                    android:id="@+id/contact_nps_icon"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Contact NPS"/>
-            </LinearLayout>
-
+                android:id="@+id/name_textview"
+                android:text="Akshit"
+                android:gravity="center_horizontal"
+                android:textSize="80dp"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!--<LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:padding="30dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:src="@drawable/enter_text_icon"
-                    android:padding="20dp"
-                    android:id="@+id/enter_regno_icon"/>
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Enter Registration No."/>
+                    android:orientation="vertical">
+
+                    <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/scan_barcode_icon"
+                        android:padding="20dp"
+                        android:id="@+id/scan_barcode_icon"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Scan Barcode"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:id="@+id/contact_nps_icon"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Contact NPS"/>
+                </LinearLayout>
+
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
-                <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:src="@drawable/logout_icon"
-                    android:padding="20dp"
-                    android:id="@+id/logout_icon"/>
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Logout"/>
+                    android:orientation="vertical">
+
+                    <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:id="@+id/enter_regno_icon"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Enter Registration No."/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <cf.qwikcheck.qwikcheck.customclasses.SquareImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:id="@+id/logout_icon"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Logout"/>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stay tuned"
+                android:textSize="24dp"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="We are rolling update on 13th April."
+                android:textColor="#fff"/>
 
         </LinearLayout>
 
-    </LinearLayout>
 
-</LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--<android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        app:fabSize="normal"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/scan_qrcode_icon"
+        android:layout_margin="16dp" />-->
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/scan_qrcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/scan_qrcode_icon"
+            app:fab_size="mini"
+            app:fab_label="Scan Barcode" />
+
+        <!--<com.github.clans.fab.FloatingActionButton
+            android:id="@+id/enter_regno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_menu"
+            app:fab_size="mini"
+            app:fab_label="Menu item 1" />-->
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/call_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_call_white_24dp"
+            app:fab_size="mini"
+            app:fab_label="Call For Help" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_history_white_24dp"
+            app:fab_size="mini"
+            app:fab_label="View Previous Challans" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_power_settings_new_white_24dp"
+            app:fab_size="mini"
+            app:fab_label="Logout"  />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</android.support.design.widget.CoordinatorLayout>
