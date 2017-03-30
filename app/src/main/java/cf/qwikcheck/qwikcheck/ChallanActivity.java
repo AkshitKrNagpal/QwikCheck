@@ -239,7 +239,7 @@ public class ChallanActivity extends QwikCheckBaseActivity {
         for (String s : description)
         {
             sb.append(s);
-            sb.append(",");
+            sb.append("\n");
         }
 
         RequestQueue queue = Volley.newRequestQueue(this);

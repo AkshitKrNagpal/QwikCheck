@@ -124,15 +124,15 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
                                 if(!rc.getBoolean("ok")) {
                                     challan +=1000;
-                                    desc+=rc.getString("message")+",";
+                                    desc+=rc.getString("message")+"\n";
                                 }
                                 if(!ins.getBoolean("ok")) {
                                     challan+=1000;
-                                    desc+=ins.getString("message")+",";
+                                    desc+=ins.getString("message")+"\n";
                                 }
                                 if(!poll.getBoolean("ok")) {
                                     challan+=1000;
-                                    desc+=poll.getString("message")+",";
+                                    desc+=poll.getString("message")+"\n";
                                 }
 
                                 updateStatus(rc_img,status_rc,rc.getBoolean("ok"),rc.getString("message"));
