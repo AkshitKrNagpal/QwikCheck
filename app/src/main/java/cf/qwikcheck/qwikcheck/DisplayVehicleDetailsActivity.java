@@ -73,8 +73,8 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                 Intent intent = new Intent(DisplayVehicleDetailsActivity.this,ChallanActivity.class);
                 intent.putExtra("vehicle_number",vehicle_id);
                 intent.putExtra("challan",challan);
-                Log.e("desc",desc);
                 intent.putExtra("desc",desc);
+                challan=0;
                 startActivity(intent);
                 finish();
             }
