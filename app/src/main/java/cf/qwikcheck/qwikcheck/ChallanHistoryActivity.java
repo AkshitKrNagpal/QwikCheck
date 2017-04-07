@@ -142,14 +142,14 @@ public class ChallanHistoryActivity extends QwikCheckBaseActivity {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         CardView root = new CardView(this);
-        root.setRadius(4);
+        root.setRadius(16);
         root.setLayoutParams(rootParams);
-        root.setPadding(16,16,16,16);
+        //root.setPadding(64,64,64,64);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setLayoutParams(llParams);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setPadding(16,16,16,16);
+        linearLayout.setPadding(32,16,32,16);
 
         TextView regno = new TextView(this);
         regno.setLayoutParams(layoutParams);
@@ -168,8 +168,17 @@ public class ChallanHistoryActivity extends QwikCheckBaseActivity {
             e.printStackTrace();
         }
 
+        TextView amount = new TextView(this);
+        amount.setLayoutParams(layoutParams);
+        try {
+            amount.setText("Rs. "+challan.getString("payment_amount")+" (Unpaid)");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         linearLayout.addView(regno);
         linearLayout.addView(description);
+        linearLayout.addView(amount);
 
         root.addView(linearLayout);
 
