@@ -66,6 +66,33 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
         insurance_img.setVisibility(View.INVISIBLE);
         poll_img.setVisibility(View.INVISIBLE);
 
+        (findViewById(R.id.rc_container)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayVehicleDetailsActivity.this,ViewRCActivity.class);
+                intent.putExtra("vehicle_number",vehicle_id);
+                startActivity(intent);
+            }
+        });
+
+        (findViewById(R.id.ins_container)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayVehicleDetailsActivity.this,ViewINSActivity.class);
+                intent.putExtra("vehicle_number",vehicle_id);
+                startActivity(intent);
+            }
+        });
+
+        (findViewById(R.id.pucc_container)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayVehicleDetailsActivity.this,ViewPUCCActivity.class);
+                intent.putExtra("vehicle_number",vehicle_id);
+                startActivity(intent);
+            }
+        });
+
         Button issueChallanButton = (Button) findViewById(R.id.issue_challan_button);
         Button backButton = (Button) findViewById(R.id.back_button);
 
@@ -144,9 +171,9 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
                                 desc = desc.substring(0,desc.length()-1);
 
-                                updateStatus(rc_img,status_rc,rc.getBoolean("ok"),rc.getString("message"));
-                                updateStatus(insurance_img,status_insurance,ins.getBoolean("ok"),ins.getString("message"));
-                                updateStatus(poll_img,status_poll,poll.getBoolean("ok"),poll.getString("message"));
+                                updateStatus(findViewById(R.id.rc_container),rc_img,status_rc,rc.getBoolean("ok"),rc.getString("message"));
+                                updateStatus(findViewById(R.id.ins_container),insurance_img,status_insurance,ins.getBoolean("ok"),ins.getString("message"));
+                                updateStatus(findViewById(R.id.pucc_container),poll_img,status_poll,poll.getBoolean("ok"),poll.getString("message"));
 
                             }
 
@@ -189,12 +216,15 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
     }
 
-    public void updateStatus(ImageView img,TextView status,boolean success,String status_text) {
+    public void updateStatus(View container,ImageView img,TextView status,boolean success,String status_text) {
         if (success) {
             img.setImageDrawable(getResources().getDrawable(R.drawable.right));
         } else {
             img.setImageDrawable(getResources().getDrawable(R.drawable.wrong));
             status.setText(status_text);
+            if(status_text.startsWith("No")) {
+                container.setOnClickListener(null);
+            }
             status.setVisibility(View.VISIBLE);
         }
         img.setVisibility(View.VISIBLE);
