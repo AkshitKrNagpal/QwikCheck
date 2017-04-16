@@ -98,6 +98,8 @@ public class LoginActivity extends QwikCheckBaseActivity {
                                 sessionHelper.setRealname(user_data.getString("full_name"));
                                 sessionHelper.setUsertype(user_data.getString("type"));
                                 sessionHelper.setAPIKey(user_data.getString("api_key"));
+                                sessionHelper.setAddress(user_data.getString("address"));
+                                sessionHelper.setContactNo(user_data.getString("contact_no"));
                                 //sessionHelper.setProfileComplete(user_data.getBoolean("profile_complete"));
 
                                 LoadingDialog.dismiss();
