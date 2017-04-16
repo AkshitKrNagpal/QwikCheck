@@ -14,7 +14,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark" />-->
-    
+
     <!--<ImageView
         android:layout_margin="8dp"
         android:layout_width="?attr/actionBarSize"
@@ -159,6 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:id="@+id/update_notification"
             android:layout_alignParentBottom="true">
 
             <TextView
