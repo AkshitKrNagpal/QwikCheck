@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -65,13 +67,21 @@ public class ChallanHistoryActivity extends QwikCheckBaseActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             if(jsonObject.getBoolean("success")) {
 
-                                JSONArray challans = jsonObject.getJSONArray("details");
+                                if(jsonObject.getInt("count") > 0 ) {
 
-                                for( int i=0; i < challans.length(); i++) {
+                                    JSONArray challans = jsonObject.getJSONArray("details");
 
-                                    JSONObject challan = challans.getJSONObject(i);
+                                    for (int i = 0; i < challans.length(); i++) {
 
-                                    addChallanToContainer(challan);
+                                        JSONObject challan = challans.getJSONObject(i);
+
+                                        addChallanToContainer(challan);
+
+                                    }
+
+                                } else {
+
+                                    setFullPageMessage("No Challans Found");
 
                                 }
 
@@ -122,6 +132,7 @@ public class ChallanHistoryActivity extends QwikCheckBaseActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("api_key", sessionHelper.getAPIKey());
                 params.put("get", "my_challans");
+                params.put("usertype",sessionHelper.getUsertype());
 
                 return params;
             }
@@ -183,6 +194,18 @@ public class ChallanHistoryActivity extends QwikCheckBaseActivity {
         root.addView(linearLayout);
 
         container.addView(root);
+
+    }
+
+    public void setFullPageMessage(String message) {
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        TextView t = new TextView(this);
+        t.setGravity(Gravity.CENTER);
+        t.setText(message);
+
+        container.addView(t);
 
     }
 
