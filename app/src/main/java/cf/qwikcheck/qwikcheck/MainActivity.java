@@ -23,7 +23,6 @@ public class MainActivity extends QwikCheckBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         SessionHelper sessionHelper = new SessionHelper(MainActivity.this);
         String usertype = sessionHelper.getUsertype();
 
@@ -31,20 +30,6 @@ public class MainActivity extends QwikCheckBaseActivity {
 
             setContentView(R.layout.activity_main_police);
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            if( toolbar != null ) {
-                setSupportActionBar(toolbar);
-                ActionBar actionBar = getSupportActionBar();
-                if (actionBar != null) {
-                    //actionBar.setDisplayHomeAsUpEnabled(true);
-                    //actionBar.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.logo_square));
-                    actionBar.setTitle("QwikCheck - Police");
-                }
-            }
-
-
-            // Floating Icon
-            //FloatingActionButton scan_qrcode_fab = (FloatingActionButton) findViewById(R.id.fab);
             (findViewById(R.id.scan_qrcode)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,20 +47,6 @@ public class MainActivity extends QwikCheckBaseActivity {
                 }
             });
 
-            TextView name = (TextView) findViewById(R.id.name_textview);
-            String temp = (new SessionHelper(this)).getRealname();
-            name.setText(temp.substring(0,temp.indexOf(' ')));
-
-            (findViewById(R.id.logout)).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    (new SessionHelper(MainActivity.this)).logout();
-                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-
             (findViewById(R.id.history)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,59 +55,12 @@ public class MainActivity extends QwikCheckBaseActivity {
                 }
             });
 
-            /*// Scan Barcode Icon
-            SquareImageView scan_barcode_icon = (SquareImageView) findViewById(R.id.scan_barcode_icon);
-            scan_barcode_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    scanBarcode();
-                }
-            });
-
-            // Enter Registration number Icon
-            SquareImageView enter_regno_icon = (SquareImageView) findViewById(R.id.enter_regno_icon);
-            enter_regno_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-            // Logout Icon
-            SquareImageView logout_icon = (SquareImageView) findViewById(R.id.logout_icon);
-            logout_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    (new SessionHelper(MainActivity.this)).logout();
-                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-
-            // Contact nearest police station
-            SquareImageView contact_nps_icon = (SquareImageView) findViewById(R.id.contact_nps_icon);
-            contact_nps_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Feature Coming Soon")
-                            .setMessage("App is under development.")
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-            });*/
-
-
-
         } else if ("user".equals(usertype)) {
 
             setContentView(R.layout.activity_main_user);
 
             // View vehicles Icon
-            SquareImageView view_vehicles_icon = (SquareImageView) findViewById(R.id.view_vehicles);
-            view_vehicles_icon.setOnClickListener(new View.OnClickListener() {
+            (findViewById(R.id.view_my_vehicle)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this,ViewMyVehicleActivity.class);
@@ -145,8 +69,7 @@ public class MainActivity extends QwikCheckBaseActivity {
             });
 
             // View profile Icon
-            SquareImageView view_profile_icon = (SquareImageView) findViewById(R.id.view_profile);
-            view_profile_icon.setOnClickListener(new View.OnClickListener() {
+            (findViewById(R.id.view_profile)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this,ViewProfileActivity.class);
@@ -154,104 +77,7 @@ public class MainActivity extends QwikCheckBaseActivity {
                 }
             });
 
-            // Edit profile Icon
-            SquareImageView edit_profile_icon = (SquareImageView) findViewById(R.id.edit_profile_icon);
-            edit_profile_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,EditProfileActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-            // Logout Icon
-            SquareImageView logout_icon = (SquareImageView) findViewById(R.id.logout_icon);
-            logout_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    (new SessionHelper(MainActivity.this)).logout();
-                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-
-
         } else if ("admin".equals(usertype)) {
-
-            setContentView(R.layout.activity_main_admin);
-
-            // RC
-            SquareImageView rc_icon = (SquareImageView) findViewById(R.id.view_vehicle);
-            rc_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
-                    intent.putExtra("next_activity","ViewRC");
-                    startActivity(intent);
-                }
-            });
-
-            SquareImageView reg_rc_icon = (SquareImageView) findViewById(R.id.reg_vehicle);
-            reg_rc_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,RegisterRC.class);
-                    startActivity(intent);
-                }
-            });
-
-            // INS
-            SquareImageView ins_icon = (SquareImageView) findViewById(R.id.view_insurance);
-            ins_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
-                    intent.putExtra("next_activity","ViewINS");
-                    startActivity(intent);
-                }
-            });
-
-            SquareImageView reg_ins_icon = (SquareImageView) findViewById(R.id.reg_insurance);
-            reg_ins_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,RegisterRC.class);
-                    startActivity(intent);
-                }
-            });
-
-            // PUCC
-            SquareImageView pucc_icon = (SquareImageView) findViewById(R.id.view_poll);
-            pucc_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
-                    intent.putExtra("next_activity","ViewPUCC");
-                    startActivity(intent);
-                }
-            });
-
-            SquareImageView reg_pucc_icon = (SquareImageView) findViewById(R.id.reg_vehicle);
-            reg_pucc_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,RegisterRC.class);
-                    startActivity(intent);
-                }
-            });
-
-            // Logout Icon
-            SquareImageView logout_icon = (SquareImageView) findViewById(R.id.logout_icon);
-            logout_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    (new SessionHelper(MainActivity.this)).logout();
-                    Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
 
         } else {
 
@@ -271,6 +97,21 @@ public class MainActivity extends QwikCheckBaseActivity {
 
 
         }
+
+        TextView name = (TextView) findViewById(R.id.name_textview);
+        String temp = (new SessionHelper(this)).getRealname();
+        name.setText(temp.substring(0,temp.indexOf(' ')));
+
+        (findViewById(R.id.logout)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                (new SessionHelper(MainActivity.this)).logout();
+                Intent intent = new Intent(MainActivity.this,SplashScreenActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     public void scanBarcode() {
