@@ -67,18 +67,6 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
         poll_img.setVisibility(View.INVISIBLE);
 
         Button issueChallanButton = (Button) findViewById(R.id.issue_challan_button);
-        issueChallanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DisplayVehicleDetailsActivity.this,ChallanActivity.class);
-                intent.putExtra("vehicle_number",vehicle_id);
-                intent.putExtra("challan",challan);
-                intent.putExtra("desc",desc);
-                challan=0;
-                startActivity(intent);
-                finish();
-            }
-        });
 
         Button backButton = (Button) findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +82,24 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
 
         SessionHelper sessionHelper = new SessionHelper(this);
         final String apiKey = sessionHelper.getAPIKey();
+
+        if("police".equals(sessionHelper.getUsertype())) {
+            issueChallanButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(DisplayVehicleDetailsActivity.this,ChallanActivity.class);
+                    intent.putExtra("vehicle_number",vehicle_id);
+                    intent.putExtra("challan",challan);
+                    intent.putExtra("desc",desc);
+                    challan=0;
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+        } else {
+            issueChallanButton.setVisibility(View.INVISIBLE);
+        }
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, Constants.CHECK_URL,
                 new Response.Listener<String>()

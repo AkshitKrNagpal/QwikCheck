@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -160,15 +162,29 @@ public class ViewMyVehicleActivity extends QwikCheckBaseActivity {
         TextView regno = new TextView(this);
         regno.setLayoutParams(layoutParams);
         regno.setTextSize(24);
+
+        String regnotext = "";
         try {
-            regno.setText(challan.getString("RegNo"));
+            regnotext = challan.getString("RegNo");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        regno.setText(regnotext);
+
         linearLayout.addView(regno);
 
         root.addView(linearLayout);
+
+        final String finalRegnotext = regnotext;
+        root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewMyVehicleActivity.this,DisplayVehicleDetailsActivity.class);
+                intent.putExtra("vehicle_number", finalRegnotext);
+                startActivity(intent);
+            }
+        });
 
         container.addView(root);
 
