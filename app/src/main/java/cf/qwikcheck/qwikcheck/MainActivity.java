@@ -30,6 +30,7 @@ public class MainActivity extends QwikCheckBaseActivity {
 
             setContentView(R.layout.activity_main_police);
 
+            // Scan QR Code
             (findViewById(R.id.scan_qrcode)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -37,6 +38,7 @@ public class MainActivity extends QwikCheckBaseActivity {
                 }
             });
 
+            // Call Help
             (findViewById(R.id.call_help)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -44,14 +46,6 @@ public class MainActivity extends QwikCheckBaseActivity {
                             .setTitle("Call For Help")
                             .setMessage("Clicking this will transmit an SOS to all the nearby police stations")
                             .show();
-                }
-            });
-
-            (findViewById(R.id.history)).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,ChallanHistoryActivity.class);
-                    startActivity(intent);
                 }
             });
 
@@ -102,6 +96,16 @@ public class MainActivity extends QwikCheckBaseActivity {
         String temp = (new SessionHelper(this)).getRealname();
         name.setText(temp.substring(0,temp.indexOf(' ')));
 
+        // View Previous Challan History
+        (findViewById(R.id.history)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this,ChallanHistoryActivity.class);
+            startActivity(intent);
+            }
+        });
+
+        // Logout
         (findViewById(R.id.logout)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
