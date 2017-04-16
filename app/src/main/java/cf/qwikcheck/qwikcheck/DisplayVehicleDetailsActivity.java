@@ -67,14 +67,7 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
         poll_img.setVisibility(View.INVISIBLE);
 
         Button issueChallanButton = (Button) findViewById(R.id.issue_challan_button);
-
         Button backButton = (Button) findViewById(R.id.back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
 
         final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Loading", "Please wait...", true);
 
@@ -96,9 +89,17 @@ public class DisplayVehicleDetailsActivity extends QwikCheckBaseActivity {
                     finish();
                 }
             });
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
 
         } else {
-            issueChallanButton.setVisibility(View.INVISIBLE);
+            issueChallanButton.setVisibility(View.GONE);
+            backButton.setVisibility(View.GONE);
+
         }
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, Constants.CHECK_URL,
