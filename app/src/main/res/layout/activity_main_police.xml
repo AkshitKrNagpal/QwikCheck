@@ -211,15 +211,15 @@
             app:fab_size="mini"
             app:fab_label="Scan Barcode" />
 
-        <!--<com.github.clans.fab.FloatingActionButton
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/enter_regno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"
-            android:src="@drawable/ic_menu"
+            android:src="@drawable/ic_border_color_white_24dp"
             app:fab_size="mini"
-            app:fab_label="Menu item 1" />-->
+            app:fab_label="Enter Reg No" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/call_help"

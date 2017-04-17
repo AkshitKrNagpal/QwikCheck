@@ -30,6 +30,15 @@ public class MainActivity extends QwikCheckBaseActivity {
 
             setContentView(R.layout.activity_main_police);
 
+            // Enter Reg No
+            (findViewById(R.id.enter_regno)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,EnterRegNoActivity.class);
+                    startActivity(intent);
+                }
+            });
+
             // Scan QR Code
             (findViewById(R.id.scan_qrcode)).setOnClickListener(new View.OnClickListener() {
                 @Override
