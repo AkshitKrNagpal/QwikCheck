@@ -125,6 +125,8 @@ public class MainActivity extends QwikCheckBaseActivity {
             }
         });
 
+        (findViewById(R.id.update_notification)).setVisibility(View.INVISIBLE);
+
     }
 
     public void scanBarcode() {
