@@ -5,7 +5,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -19,20 +23,32 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
+import cf.qwikcheck.qwikcheck.base.QwikCheckBaseActivity;
 import cf.qwikcheck.qwikcheck.helper.SessionHelper;
 import cf.qwikcheck.qwikcheck.utils.Constants;
 
-public class ViewRCActivity extends Activity {
+public class ViewRCActivity extends QwikCheckBaseActivity {
 
+    private LinearLayout container;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_rc);
 
-        final TextView rc_details = (TextView) findViewById(R.id.rc_details);
+        //final TextView rc_details = (TextView) findViewById(R.id.rc_details);
         final String vehicle_id = getIntent().getStringExtra("vehicle_number");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if( toolbar != null ) {
+            setSupportActionBar(toolbar);
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle("RC Details : "+vehicle_id);
+            }
+        }
 
         final ProgressDialog LoadingDialog = ProgressDialog.show(this, "Loading", "Please wait...", true);
 
@@ -40,6 +56,8 @@ public class ViewRCActivity extends Activity {
 
         SessionHelper sessionHelper = new SessionHelper(this);
         final String apiKey = sessionHelper.getAPIKey();
+
+        container = (LinearLayout) findViewById(R.id.rc_container);
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, Constants.API_BASE_URL,
                 new Response.Listener<String>()
@@ -67,9 +85,12 @@ public class ViewRCActivity extends Activity {
 
                                 JSONObject details = jsonObject.getJSONObject("details");
 
-                                rc_details.setText(details.toString());
+                                Iterator<String> iter = details.keys();
 
-
+                                while( iter.hasNext() ) {
+                                    String key = iter.next();
+                                    addToContainer(key,details.getString(key));
+                                }
 
                             }
 
@@ -110,5 +131,30 @@ public class ViewRCActivity extends Activity {
             }
         };
         queue.add(postRequest);
+    }
+
+    public void addToContainer(String key,String value) {
+
+        LinearLayout row = new LinearLayout(this);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(0,8,0,8);
+        row.setLayoutParams(layoutParams);
+
+
+        TextView key_view = new TextView(this);
+        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,2);
+        key_view.setLayoutParams(layoutParams1);
+        key_view.setText(key);
+
+        TextView value_view = new TextView(this);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,3);
+        value_view.setLayoutParams(layoutParams2);
+        value_view.setText(value);
+
+        row.addView(key_view);
+        row.addView(value_view);
+
+        container.addView(row);
+
     }
 }
